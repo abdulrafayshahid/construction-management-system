@@ -94,7 +94,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Input group=-->
                                 <div class="fv-row mb-7">
                                     <!--begin::Password-->
-                                    <input type="text" placeholder="Password" name="password" autocomplete="off"
+                                    <input type="password" placeholder="Password" name="password" autocomplete="off"
                                         data-kt-translate="sign-in-input-password"
                                         class="form-control form-control-solid" />
                                     <!--end::Password-->
