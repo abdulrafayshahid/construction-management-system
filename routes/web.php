@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 Route::get('/signin', function () {
     return view('admin.signin');
-});
+})->name('signin');
 Route::get('/forgotpassword', function () {
     return view('admin.forgot_pass');
 });
@@ -39,5 +39,8 @@ Route::middleware(['admin_middleware'])->group(function () {
     Route::get('/viewuser', function () {
         return view('admin.view_user');
     });
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+
 

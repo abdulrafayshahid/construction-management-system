@@ -39,4 +39,9 @@ class LoginController extends Controller
             return ($notification);
         }
     }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('signin')->with('status', 'You have been logged out!');
+    }
 }
