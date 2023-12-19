@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,8 @@ Route::middleware(['admin_middleware'])->group(function () {
 
     Route::get('/createuser', function () {
         return view('admin.create_user');
-    });
+    })->name('createuser');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::get('/viewuser', function () {
         return view('admin.view_user');
     });

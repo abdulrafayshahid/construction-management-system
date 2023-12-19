@@ -82,8 +82,9 @@ License: For each use you must have a valid license purchased only from above li
 						@include('components.sidebar')
 					<!--begin::Main-->
                     <main>
-            <form id="form" method="post" enctype="multipart/form-data">
-                <div class="container-fluid">
+                    <form id="form" method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="container-fluid">
                     <h1 class="mt-4">Add Employee</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
@@ -101,7 +102,13 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>User Name *</label>
-                                                        <input id="employee_name" name="employee_name" type="text" class="form-control" placeholder="Full Name" required>
+                                                        <input id="name" name="name" type="text" class="form-control" placeholder="Full Name" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>User ID *</label>
+                                                        <input id="user_id" name="user_id" type="text" class="form-control" placeholder="User ID" required>
                                                     </div>
                                                 </div>
 
@@ -136,7 +143,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Contact Number</label>
-                                                <input id="contact_number" name="contact_number" type="text" class="form-control" placeholder="Contact Number">
+                                                <input id="number" name="number" type="text" class="form-control" placeholder="Contact Number">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -155,19 +162,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>User Role</label>
-                                                <div>
-                                                    <select id="user_access" name="user_access" class="custom-select">
-                                                        <option>Administrator</option>
-                                                        <option>Employee</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
                                                 <label>Password *</label>
-                                                <input id="password" name="password" type="text" class="form-control" placeholder="Password" required>
+                                                <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
                                             </div>
                                         </div>
                                 </div>
