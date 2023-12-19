@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 
@@ -11,8 +11,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        // Auth::logout();
-        // dd($request->all());
+
         $validated = $request->validate([
             'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|max:100',
             'password' => 'required'
@@ -23,7 +22,7 @@ class LoginController extends Controller
             'password' => $request->password,
             'role' => 1,
         ]);
-        $user_status = User::where('email', $request->email)->where('role', '!=', 2)->first();
+        $user_status = Admin::where('email', $request->email)->where('role', '!=', 2)->first();
         if ($user_status != null) {
             if ($credentials) {
                 if (Auth::check() && (Auth::user()->role == 1)) {
