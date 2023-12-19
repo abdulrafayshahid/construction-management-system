@@ -119,7 +119,6 @@ License: For each use you must have a valid license purchased only from above li
     <label for="role">Role *</label>
     <select id="role" name="role" class="form-control" required>
         <option value="" disabled selected>Select Role</option>
-        <option value="Admin">Admin</option>
         <option value="Sales-Marketing">Sales-Marketing</option>
         <option value="Booking">Booking</option>
         <option value="Recovery">Recovery</option>

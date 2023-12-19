@@ -42,6 +42,7 @@ Route::middleware(['admin_middleware'])->group(function () {
     Route::get('/viewuser', function () {
         return view('admin.view_user');
     });
+    Route::get('/viewuser', [UserController::class, 'index'])->name('users.index');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
