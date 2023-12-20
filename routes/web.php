@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/signin', function () {
     return view('admin.signin');
 })->name('signin');
 Route::get('/forgotpassword', function () {
@@ -41,8 +41,10 @@ Route::middleware(['admin_middleware'])->group(function () {
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::get('/viewuser', function () {
         return view('admin.view_user');
-    });
+    })->name('viewuser');
     Route::get('/viewuser', [UserController::class, 'index'])->name('users.index');
+    Route::post('/users/update', [UserController::class, 'update'])->name('users.update');
+    Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 

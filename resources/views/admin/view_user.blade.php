@@ -81,8 +81,6 @@ License: For each use you must have a valid license purchased only from above li
 						<!--end::Logo-->
 						@include('components.sidebar')
 
-
-
 					<!--begin::Main-->
                     <!--begin::Content-->
 							<div id="kt_app_content" class="app-content flex-column-fluid">
@@ -246,8 +244,16 @@ License: For each use you must have a valid license purchased only from above li
                     <td>{{ $user->branch }}</td>
                     <td>{{ $user->number }}</td>
                     <td class="text-end min-w-70px">
-                        <!-- Actions buttons -->
-                    </td>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item edit-btn" data-user-id="{{ $user->id }}">Edit</a>
+            <a class="dropdown-item" href="{{ route('users.delete', ['id' => $user->id]) }}">Delete</a>
+        </div>
+    </div>
+</td>
                 </tr>
             @endforeach
         </tbody>
@@ -5368,8 +5374,87 @@ License: For each use you must have a valid license purchased only from above li
 						</div>
 						<!--end::Footer-->
 		<!--end::Modal - Invite Friend-->
+        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editUserForm" action="{{ route('users.update') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <input type="hidden" name="user_id" id="editUserId">
+
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="editName" name="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editEmail" name="email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editRole" class="form-label">Role</label>
+                        <input type="text" class="form-control" id="editRole" name="role">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editBranch" class="form-label">Branch</label>
+                        <input type="text" class="form-control" id="editBranch" name="branch">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editNumber" class="form-label">Number</label>
+                        <input type="text" class="form-control" id="editNumber" name="number">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 		<!--end::Modals-->
 		<!--begin::Javascript-->
+        <!-- Add these to your HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('.edit-btn').click(function () {
+            var userId = $(this).data('user-id');
+
+            var tableRow = $(this).closest('tr');
+
+            var name = tableRow.find('td:eq(1)').text();
+            var email = tableRow.find('td:eq(2)').text();
+            var role = tableRow.find('td:eq(3)').text();
+            var branch = tableRow.find('td:eq(4)').text();
+            var number = tableRow.find('td:eq(5)').text();
+
+            $('#editUserId').val(userId);
+            $('#editName').val(name);
+            $('#editEmail').val(email);
+            $('#editRole').val(role);
+            $('#editBranch').val(branch);
+            $('#editNumber').val(number);
+
+            $('#editUserModal').modal('show');
+        });
+    });
+</script>
+
+
+
 		<script>var hostUrl = "assets/";</script>
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
 		<script src="assets/plugins/global/plugins.bundle.js"></script>

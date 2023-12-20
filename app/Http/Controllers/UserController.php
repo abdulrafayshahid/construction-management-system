@@ -39,4 +39,46 @@ class UserController extends Controller
 
         return view('admin.view_user', compact('users'));
     }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'User not found.');
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+    }
+
+    public function update(Request $request)
+{
+    $validatedData = $request->validate([
+        'user_id' => 'required',
+        'name' => 'required',
+        'role' => 'required',
+        'email' => 'email',
+        'number' => 'nullable|numeric',
+        'branch' => 'nullable',
+    ]);
+
+    $user = User::find($validatedData['user_id']);
+
+    if (!$user) {
+        return response()->json(['message' => 'User not found'], 404);
+    }
+
+    $user->name = $validatedData['name'];
+    $user->email = $validatedData['email'];
+    $user->role = $validatedData['role'];
+    $user->branch = $validatedData['branch'];
+    $user->number = $validatedData['number'];
+
+    $user->save();
+
+    return redirect()->route('users.index')->with('success', 'User updated successfully.');
+}
+
 }
