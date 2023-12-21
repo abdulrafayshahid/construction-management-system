@@ -156,9 +156,9 @@ License: For each use you must have a valid license purchased only from above li
             .form-control.form-control-solid {
             border: 1px solid #87CEFA;
             }
-            .text-dark {
+            /* .text-dark {
             color: #4aaae6 !important;
-            }
+            } */
             </style>
     </div>
     <!--end::Root-->
