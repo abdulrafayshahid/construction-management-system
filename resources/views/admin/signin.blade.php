@@ -145,11 +145,21 @@ License: For each use you must have a valid license purchased only from above li
             </div>
             <!--end::Aside-->
             <!--begin::Body-->
-            <div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat"
-                style="background-image: url(assets/media/auth/bg11.png)"></div>
+            <div class="w-50"
+            style="background-image: url(assets/media/auth/bg13.jpg); background-size: cover; height: 100vh;"></div>
+
+
             <!--begin::Body-->
         </div>
         <!--end::Authentication - Sign-in-->
+        <style>
+            .form-control.form-control-solid {
+            border: 1px solid #87CEFA;
+            }
+            .text-dark {
+            color: #4aaae6 !important;
+            }
+            </style>
     </div>
     <!--end::Root-->
     <!--begin::Javascript-->

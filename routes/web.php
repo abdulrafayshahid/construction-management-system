@@ -34,7 +34,7 @@ Route::middleware(['admin_middleware'])->group(function () {
     Route::get('/admindashboard', function () {
         return view('admin.admin_dashboard');
     })->name("admin.dashboard");
-
+    Route::get('/admindashboard', [UserController::class, 'getTotalUsers']);
     Route::get('/createuser', function () {
         return view('admin.create_user');
     })->name('createuser');
