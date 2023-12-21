@@ -17,9 +17,7 @@
                                 <span class="path4"></span>
                             </i>
                         </span>
-                        <span class="menu-title">Dashboard
-                        {{-- <a href="{{ route('admin.dashboard') }}"> --}}
-                        </span>
+                        <a href="/admindashboard" class="menu-title">Dashboard</a>
                     </span>
                     <!--end:Menu link-->
                 </div>

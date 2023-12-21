@@ -25,8 +25,6 @@ Route::get('/', function () {
 Route::get('/forgotpassword', function () {
     return view('admin.forgot_pass');
 });
-
-
 Route::post('login', [LoginController::class, 'login'])->name('website.login');
 
 
@@ -34,7 +32,7 @@ Route::middleware(['admin_middleware'])->group(function () {
     Route::get('/admindashboard', function () {
         return view('admin.admin_dashboard');
     })->name("admin.dashboard");
-    Route::get('/admindashboard', [UserController::class, 'getTotalUsers']);
+    // Route::get('/admindashboard', [UserController::class, 'getTotalUsers'])->name('total.users');
     Route::get('/createuser', function () {
         return view('admin.create_user');
     })->name('createuser');
